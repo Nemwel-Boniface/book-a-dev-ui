@@ -1,0 +1,24 @@
+[{
+    "id": "1",
+    "name": "Developer 1",
+    "image_url": " https://www.google.com/search?q=react&sxsrf=ALiCzsaKM1i8g6659Al94CWojeOOIpUOig:1660309239871&tbm=isch&source=iu&ictx=1&vet=1&fir=mFWZc-Pfqi9J1M%252CCd78Z_qevSizDM%252C%252Fm%252F012l1vxv%253BviJ6CsTiT3pOsM%252CSysQ6jNe8DuZpM%252C_%253BO96U6A-a_3de2M%252C3szmpW1K7Em4aM%252C_%253Bj01wNef9SchQTM%252CmM1BU1-EasHt2M%252C_%253BbT_tnGzmcoCfxM%252C2IGqoDSb_YG6OM%252C_&usg=AI4_-kQeRhZV-y8e6-mqdCF3RlHsCbxcHg&sa=X&ved=2ahUKEwj_utbzrcH5AhVH8IUKHfimC1oQ_B16BAhSEAE#imgrc=mFWZc-Pfqi9J1M ",
+    "description": "Fullstack web developer",
+    "alt": "Developer",
+    "medias": {
+      "media_url": "https://github.com/maxthestranger",
+      "icon": "",
+      "alt": "github"
+    }
+  },
+  {
+    "id": "2",
+    "name": "Developer 2",
+    "image_url": " https://www.google.com/search?q=react&sxsrf=ALiCzsaKM1i8g6659Al94CWojeOOIpUOig:1660309239871&tbm=isch&source=iu&ictx=1&vet=1&fir=mFWZc-Pfqi9J1M%252CCd78Z_qevSizDM%252C%252Fm%252F012l1vxv%253BviJ6CsTiT3pOsM%252CSysQ6jNe8DuZpM%252C_%253BO96U6A-a_3de2M%252C3szmpW1K7Em4aM%252C_%253Bj01wNef9SchQTM%252CmM1BU1-EasHt2M%252C_%253BbT_tnGzmcoCfxM%252C2IGqoDSb_YG6OM%252C_&usg=AI4_-kQeRhZV-y8e6-mqdCF3RlHsCbxcHg&sa=X&ved=2ahUKEwj_utbzrcH5AhVH8IUKHfimC1oQ_B16BAhSEAE#imgrc=mFWZc-Pfqi9J1M ",
+    "description": "Fullstack web developer",
+    "alt": "Developer 2",
+    "medias": {
+      "media_url": "https://github.com/maxthestranger",
+      "icon": "",
+      "alt": "github"
+    }
+  }]
