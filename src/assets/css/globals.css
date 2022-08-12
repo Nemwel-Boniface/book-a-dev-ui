@@ -88,6 +88,28 @@ body {
   transition: all 0.15s;
 }
 
+.info-text .reserve a {
+  margin-left: auto;
+  color: #fff;
+  background: #001e00;
+  border-color: transparent;
+  padding: 12px 29px;
+  border: 1px solid;
+  border-radius: 10rem;
+  font-weight: 500;
+  display: inline-block;
+  font-size: 15px;
+  line-height: 1;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  user-select: none;
+  transition: all 0.15s;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
 .navbar .navbar-social a:hover {
   transform: scale(1.5);
 }
@@ -139,6 +161,20 @@ body {
   border-radius: 10rem;
   margin-top: 10px;
   align-items: center;
+}
+
+.info-text .skills ul li span {
+  display: inline-flex;
+  align-items: center;
+  height: 25px;
+  margin: 0 5px 10px 0;
+  padding: 0 10px;
+  color: #13544e;
+  background: #e4ebe4;
+  border-radius: 12px;
+  font-size: 12px;
+  cursor: default;
+  line-height: 1;
 }
 
 .info .img .status span {
@@ -202,46 +238,10 @@ body {
   padding-right: 5px;
 }
 
-.info-text .skills ul li span {
-  display: inline-flex;
-  align-items: center;
-  height: 25px;
-  margin: 0 5px 10px 0;
-  padding: 0 10px;
-  color: #13544e;
-  background: #e4ebe4;
-  border-radius: 12px;
-  font-size: 12px;
-  cursor: default;
-  line-height: 1;
-}
-
 .info-text .reserve {
   padding-top: 30px;
   display: flex;
   align-items: center;
-}
-
-.info-text .reserve a {
-  margin-left: auto;
-  color: #fff;
-  background: #001e00;
-  border-color: transparent;
-  padding: 12px 29px;
-  border: 1px solid;
-  border-radius: 10rem;
-  font-weight: 500;
-  display: inline-block;
-  font-size: 15px;
-  line-height: 1;
-  text-align: center;
-  vertical-align: middle;
-  white-space: nowrap;
-  user-select: none;
-  transition: all 0.15s;
-  cursor: pointer;
-  text-decoration: none;
-  text-transform: capitalize;
 }
 
 .info-text .reserve a:hover {
