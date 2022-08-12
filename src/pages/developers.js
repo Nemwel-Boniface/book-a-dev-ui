@@ -1,7 +1,9 @@
+import Layout from '../layouts/layout';
+
 const Developers = () => (
-  <div>
+  <Layout>
     <h1>Developer List</h1>
-  </div>
+  </Layout>
 );
 
 export default Developers;

@@ -10,6 +10,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="developers" element={<Developers />} />
         <Route path="developers/:developerId" element={<Developer />} />
+        <Route path="new_dev" element={<Developer />} />
       </Routes>
     </BrowserRouter>
   );
