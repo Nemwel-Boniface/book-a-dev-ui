@@ -1,35 +1,31 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const SideBar = () => (
   <nav className="navbar">
-    <Link to="/">
-      <img
-        src="https://img.icons8.com/color/48/000000/github.png"
-        className="logo"
-        alt="Logo"
-      />
-    </Link>
+    <NavLink to="/" className="logo">
+      <h1>Dev Hub</h1>
+    </NavLink>
 
     <ul className="navbar-nav">
       <li className="nav-item">
-        <Link to="/developers" className="nav-link">
+        <NavLink to="/developers" className="nav-link">
           Developers
-        </Link>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <Link to="/developers/new" className="nav-link">
+        <NavLink to="/developers/new" className="nav-link">
           New Developer
-        </Link>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <Link to="/reservation/new" className="nav-link">
+        <NavLink to="/reservation/new" className="nav-link">
           New Reservation
-        </Link>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <Link to="/reservation" className="nav-link">
+        <NavLink to="/reservation" className="nav-link">
           Reservations
-        </Link>
+        </NavLink>
       </li>
     </ul>
 
@@ -40,11 +36,7 @@ const SideBar = () => (
         rel="noopener noreferrer"
         className="navbar-social-item"
       >
-        <img
-          src="https://img.icons8.com/color/48/000000/facebook-new.png"
-          className="navbar-social-item-icon"
-          alt="Facebook"
-        />
+        <i className="bi bi-facebook" />
       </a>
       <a
         href="https://www.instagram.com/reactjs.br/"
@@ -52,11 +44,15 @@ const SideBar = () => (
         rel="noopener noreferrer"
         className="navbar-social-item"
       >
-        <img
-          src="https://img.icons8.com/color/48/000000/instagram-new.png"
-          className="navbar-social-item-icon"
-          alt="Instagram"
-        />
+        <i className="bi bi-instagram" />
+      </a>
+      <a
+        href="https://www.instagram.com/reactjs.br/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="navbar-social-item"
+      >
+        <i className="bi bi-pinterest" />
       </a>
     </div>
   </nav>
