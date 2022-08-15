@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchDevelopers } from '../redux/actions/developers';
-import Developer from './developer';
+import SingleDeveloper from './single_developer';
 
 const Developers = (id) => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const Developers = (id) => {
       <p>Please select a developer</p>
 
       <div>
-        <Developer developpers={developers} key={id} />
+        <SingleDeveloper developpers={developers} key={id} />
       </div>
 
     </section>

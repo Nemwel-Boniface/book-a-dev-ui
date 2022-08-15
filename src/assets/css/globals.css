@@ -5,3 +5,26 @@
   margin: 0;
   padding: 0;
 }
+
+.dev-list{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
+}
+.dev-card{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.image{
+  border: 2px solid black;
+  border-radius: 50%;
+}
+.social{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-decoration: none;
+}

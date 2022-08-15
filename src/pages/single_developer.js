@@ -2,21 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import developers from '../helpers/developers.json';
 
-const Developer = () => (
-  <section>
-    <div>
+const SingleDeveloper = () => (
+  <section className="dev-card">
+    <div className="dev-list">
       {developers.map((developer) => (
-        <div key={developer.id}>
+        <div key={developer.id} className="item">
 
           <Link to={`${developer.id}`} key={developer.id}>
-            <div>
+            <div className="image">
               <img src={developer.image_url} alt={developer.alt} />
             </div>
 
             <div>
               <h2>{developer.name}</h2>
               <p>{developer.description}</p>
-              <ul>
+              <ul className="social">
                 {developer.medias.map((media) => (
                   <li key={media.id}>
                     <a href={media.media_url}>
@@ -35,4 +35,4 @@ const Developer = () => (
   </section>
 );
 
-export default Developer;
+export default SingleDeveloper;
