@@ -20,6 +20,14 @@
   grid-template-columns: auto auto auto auto;
   gap: 10px;
 }
+
+body {
+  color: #001e00;
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
+}
+
 .dev-card{
   display: flex;
   flex-direction: row;
@@ -38,12 +46,6 @@
   text-decoration: none;
 }
 
-body {
-  color: #001e00;
-  font-size: 14px;
-  line-height: 1.5;
-  font-family: 'Roboto', sans-serif;
-}
 
 .wrapper {
   display: flex;
