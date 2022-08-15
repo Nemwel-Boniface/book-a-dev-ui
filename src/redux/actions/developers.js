@@ -37,3 +37,7 @@ export const fetchDeveloper = (dispatch) => {
       });
     });
 };
+
+export const newDev = () => {
+
+};
