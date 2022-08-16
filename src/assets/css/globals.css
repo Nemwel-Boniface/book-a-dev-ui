@@ -15,7 +15,7 @@
   padding: 0;
 }
 
-.dev-list{
+.dev-list {
   display: grid;
   grid-template-columns: auto auto auto auto;
   gap: 10px;
@@ -28,24 +28,25 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.dev-card{
+.dev-card {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
-.image{
+
+.image {
   border: 2px solid black;
   border-radius: 50%;
 }
-.social{
+
+.social {
   display: flex;
   justify-content: space-around;
   align-items: center;
   text-decoration: none;
 }
-
 
 .wrapper {
   display: flex;
@@ -273,4 +274,25 @@ body {
   color: #fff;
   box-shadow: none;
   background: hsla(120, 100%, 6%, 80%);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: auto;
+}
+
+.form-section {
+  width: 40%;
+  padding: 5%;
+  margin: auto;
+  box-shadow: 0 4px 8px 0 #13544e;
+}
+
+.field {
+  margin: 5px;
+  height: 40px;
+  border-radius: 10px;
+  padding: 5px;
 }
