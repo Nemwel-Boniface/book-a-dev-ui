@@ -31,14 +31,14 @@ const developerReducer = (state = initialState, action) => {
     case actionTypes.DEVELOPER_FETCH_SUCCESS:
       return {
         ...state,
-        DEVELOPER: action.payload,
+        developer: action.payload,
         loading: false,
         error: null,
       };
     case actionTypes.DEVELOPER_FETCH_FAILURE:
       return {
         ...state,
-        DEVELOPER: {},
+        developer: {},
         loading: false,
         error: action.payload,
       };

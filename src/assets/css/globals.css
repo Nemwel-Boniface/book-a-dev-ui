@@ -140,6 +140,22 @@ body {
   transform: scale(1.5);
 }
 
+/* developers list page */
+.devs {
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.devs .title,
+.devs .desc {
+  text-align: left;
+}
+
+.dev-card {
+  border: var(--border);
+  border-radius: 13px;
+}
+
 /* developer details page */
 .info {
   margin: 0 auto;

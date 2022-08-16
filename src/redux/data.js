@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const url = 'https://mocki.io/v1/7cabf1d8-70e2-4ccc-87e7-df304d113307';
+const url = 'http://localhost:8080/api/v1';
 
-export const getDeveloper = async () => {
-  const response = await axios.get(`${url}`, {
+export const getDeveloper = async (id) => {
+  const response = await axios.get(`${url}/developers/${id}`, {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -12,7 +12,7 @@ export const getDeveloper = async () => {
 };
 
 export const fetchDevelopers = async () => {
-  const response = await axios.get(`${url}`, {
+  const response = await axios.get(`${url}/developers`, {
     headers: {
       'Content-Type': 'application/json',
     },
