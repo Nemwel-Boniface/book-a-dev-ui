@@ -34,7 +34,7 @@ const Developers = () => {
               ? reservations.map((reservation) => (
                 <Reservation reservation={reservation} key={reservation.id} />
               ))
-              : 'No developers found'}
+              : 'No reservations found'}
           </tbody>
         </table>
       </div>
