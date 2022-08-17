@@ -4,12 +4,14 @@ import Developer from './pages/developer';
 import Login from './pages/login';
 import FormReservation from './pages/reserveForm';
 import CreateDev from './pages/create_dev';
+import Signup from './pages/signup';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="registration" element={<Signup />} />
         <Route path="developers" element={<Developers />} />
         <Route path="developers/:developerId" element={<Developer />} />
         <Route path="new_dev" element={<Developer />} />
