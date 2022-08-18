@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const SingleDeveloper = ({ developer }) => (
-  <Link to={`/developers/${developer.id}`} className="dev-card">
+  <Link to={`/developers/${developer.id}`} className="devs-card">
     <div className="image">
       <img src={developer.icon} alt={developer.name} />
     </div>
