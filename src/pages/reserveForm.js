@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import createReservation from '../redux/actions/reservation';
+import { createReservation } from '../redux/actions/reservation';
 import ReservationForm from '../components/reserve/form';
 
 const FormReservation = () => {
