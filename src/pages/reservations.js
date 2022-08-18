@@ -7,7 +7,7 @@ import Reservation from '../components/reservation/reservation';
 
 const Developers = () => {
   const dispatch = useDispatch();
-  const { reservations } = useSelector((state) => state.reservations);
+  const { reservations } = useSelector((state) => state.reservation);
   const { userId } = useParams();
 
   useEffect(() => {
@@ -30,11 +30,15 @@ const Developers = () => {
             </tr>
           </thead>
           <tbody>
-            {reservations.length
-              ? reservations.map((reservation) => (
+            {reservations.length ? (
+              reservations.map((reservation) => (
                 <Reservation reservation={reservation} key={reservation.id} />
               ))
-              : 'No reservations found'}
+            ) : (
+              <tr>
+                <td>No reservations found</td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
