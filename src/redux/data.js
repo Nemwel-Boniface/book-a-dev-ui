@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const url = 'http://localhost:8080/api/v1';
-export const getDeveloper = async (id) => {
-  const response = await axios.get(`${url}/developers/${id}`, {
+
 export const signup = async (user) => {
   const response = await axios.post(`${url}/users`, {
     user: {

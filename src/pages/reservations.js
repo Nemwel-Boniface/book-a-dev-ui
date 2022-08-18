@@ -1,18 +1,18 @@
-// import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-// import { useParams } from 'react-router-dom';
-// import { fetchReservations } from '../redux/actions/reservation';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { fetchReservations } from '../redux/actions/reservation';
 import Layout from '../layouts/layout';
 import Reservation from '../components/reservation/reservation';
 
 const Developers = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { reservations } = useSelector((state) => state.reservations);
-  // const { userId } = useParams();
+  const { userId } = useParams();
 
-  // useEffect(() => {
-  //   dispatch(fetchReservations(userId));
-  // }, []);
+  useEffect(() => {
+    dispatch(fetchReservations(userId));
+  }, []);
 
   return (
     <Layout>
