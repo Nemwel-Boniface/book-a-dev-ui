@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 const RequireAuth = () => {
   const user = useSelector((state) => state.user);
   const location = useLocation();
-  const { from } = location.state || { from: { pathname: '/dashboard' } };
+  const { from } = location.state || { from: { pathname: '/developers' } };
   if (user.isLoggedIn) {
     return Outlet(from);
   }

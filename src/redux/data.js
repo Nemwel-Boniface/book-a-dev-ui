@@ -58,23 +58,13 @@ export const createdeveloper = async (developer) => {
 
 // get a dev
 export const getDeveloper = async (id) => {
-  const response = await axios.get(`${url}/developers/${id}`, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authHeader()}`,
-    },
-  });
+  const response = await axios.get(`${url}/developers/${id}`);
   return response.data;
 };
 
 // get all devs
 export const fetchDevelopers = async () => {
-  const response = await axios.get(`${url}/developers`, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authHeader()}`,
-    },
-  });
+  const response = await axios.get(`${url}/developers`);
   return response.data;
 };
 

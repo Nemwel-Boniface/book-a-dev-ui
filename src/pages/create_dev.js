@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { ThreeDots } from 'react-loader-spinner';
 import { newDev } from '../redux/actions/developers';
 import Layout from '../layouts/layout';
 
 const CreateDev = () => {
+  const [loading, setLoading] = useState(false);
+  const { error } = useSelector((state) => state.developer);
   const [dev, setdev] = useState({
     name: '',
     icon: '',
@@ -24,22 +27,24 @@ const CreateDev = () => {
   const handleChange = (e) => {
     const { target } = e;
 
-    let value = target.type === 'checkbox' ? target.checked : target.value;
-    if (target.name === 'hourly_rate' || target.name === 'experience') {
-      value = parseInt(value, 10);
-    }
-
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     setdev({
       ...dev,
       [target.name]: value,
     });
   };
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(newDev(dev, navigate, e));
+    setLoading(true);
+    setTimeout(() => {
+      dispatch(newDev(dev));
+      setLoading(false);
+      navigate('/developers');
+    }, 1000);
   };
 
   return (
@@ -49,6 +54,11 @@ const CreateDev = () => {
 
         <div>
           <form className="form" onSubmit={handleSubmit}>
+            {error && (
+            <div className="error_message">
+              <p>Wrong developer credentials or An error occured</p>
+            </div>
+            )}
             <input
               className="field"
               placeholder="Dev Name"
@@ -104,8 +114,7 @@ const CreateDev = () => {
             />
             <input
               className="field"
-              type="text"
-              pattern="[0-100]*"
+              type="number"
               name="experience"
               placeholder="Years of Experience"
               value={dev.experience}
@@ -128,8 +137,7 @@ const CreateDev = () => {
             <input
               className="field"
               placeholder="Hourly Rate"
-              type="text"
-              pattern="[0-100]*"
+              type="number"
               name="hourly_rate"
               value={dev.hourly_rate}
               onChange={handleChange}
@@ -175,7 +183,7 @@ const CreateDev = () => {
             <input
               className="field"
               placeholder="Telephone"
-              type="tel"
+              type="text"
               name="phone"
               value={dev.phone}
               minLength="1"
@@ -201,14 +209,25 @@ const CreateDev = () => {
                 type="checkbox"
                 id="available"
                 name="available"
+                checked={dev.available}
                 value={dev.available}
                 onChange={handleChange}
-                required
               />
               Are you available to work?
             </label>
-            <button className="submit_btn" type="submit">
-              Create developer
+            <button className="submit_btn" type="submit" disabled={loading}>
+              {loading ? (
+                <>
+                  <ThreeDots
+                    height="15"
+                    width="40"
+                    radius="1"
+                    color="#ffffff"
+                  />
+                </>
+              ) : (
+                'Create Developer'
+              )}
             </button>
           </form>
         </div>
