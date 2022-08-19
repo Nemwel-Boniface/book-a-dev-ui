@@ -20,7 +20,6 @@ export const login = (userData, location) => (dispatch) => {
         });
 
         localStorage.setItem('user', JSON.stringify(response.data.data));
-
         location('/developers');
       } else {
         dispatch({
@@ -38,16 +37,15 @@ export const login = (userData, location) => (dispatch) => {
 };
 
 export const signup = (userData, location) => (dispatch) => {
-  dispatch({
-    type: actionTypes.USER_REGISTER_REQUEST,
-  });
   API.signup(userData)
-    .then((user) => {
+    .then((res) => {
       dispatch({
         type: actionTypes.USER_REGISTER_SUCCESS,
-        payload: user,
+        payload: res.data,
       });
-      location('/login');
+
+      localStorage.setItem('user', JSON.stringify(res.data));
+      location('/developers');
     })
     .catch((error) => {
       dispatch({

@@ -361,7 +361,9 @@ body {
   border: 1px solid;
   border-radius: 10rem;
   font-weight: 500;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   font-size: 15px;
   line-height: 1;
   text-align: center;
@@ -416,4 +418,10 @@ td {
 td,
 th {
   padding: 10px;
+}
+
+.error_message {
+  margin-bottom: 10px;
+  color: rgb(255, 71, 71);
+  text-align: center;
 }

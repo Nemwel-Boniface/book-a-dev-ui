@@ -14,10 +14,12 @@ const initialState = user
   ? {
     isLoggedIn: true,
     user,
+    error: null,
   }
   : {
     isLoggedIn: false,
     user: null,
+    error: null,
   };
 
 const userReducer = (state = initialState, action) => {
@@ -57,6 +59,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         user: null,
+        error: action.payload,
       };
     default:
       return state;

@@ -5,21 +5,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signup } from '../redux/actions/user';
 
 const Signup = () => {
-  const { errorSignup = null, loadingSignup = false } = useSelector(
-    (state) => state.user,
-  );
+  const [loading, setLoading] = useState(false);
   const [userSignup, setSignup] = useState({
     email: '',
     password: '',
     username: '',
+    name: '',
   });
+
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    dispatch(signup(userSignup, navigate));
-  };
 
   const handleOnChange = (event) => {
     setSignup((prevState) => ({
@@ -28,14 +24,23 @@ const Signup = () => {
     }));
   };
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      dispatch(signup(userSignup, navigate));
+    }, 1000);
+  };
+
   return (
     <div className="wrapperForm">
       <div className="form-section">
         <h1>Sign Up</h1>
         <form onSubmit={handleLogin} className="form">
-          {errorSignup && (
-            <div className="w-3/4">
-              <p>Username/Email already exist</p>
+          {user.error && (
+            <div className="error_message">
+              <p>Wrong user credentials or User does not exist</p>
             </div>
           )}
           <input
@@ -58,6 +63,15 @@ const Signup = () => {
           />
           <input
             onChange={handleOnChange}
+            type="text"
+            name="name"
+            placeholder="Full name"
+            required
+            value={userSignup.name}
+            className="field"
+          />
+          <input
+            onChange={handleOnChange}
             type="password"
             name="password"
             placeholder="Password"
@@ -67,26 +81,25 @@ const Signup = () => {
             className="field"
           />
 
-          {loadingSignup && (
-            <div>
-              <ThreeDots
-                height="180"
-                width="180"
-                radius="3"
-                color="#98be20"
-                ariaLabel="three-dots-loading"
-                wrapperStyle
-                wrapperClass
-              />
-            </div>
-          )}
-
-          <button type="submit" className="submit_btn">
-            Sign Up
+          <button type="submit" className="submit_btn" disabled={loading}>
+            {loading ? (
+              <>
+                <ThreeDots
+                  height="15"
+                  width="40"
+                  radius="1"
+                  color="#ffffff"
+                  ariaLabel="three-dots-loading"
+                  wrapperStyle
+                  wrapperClass
+                />
+              </>
+            ) : (
+              'Sign Up'
+            )}
           </button>
           <p className="not_member">
             Already a member?
-            {' '}
             {' '}
             <Link to="/">Log In</Link>
           </p>
