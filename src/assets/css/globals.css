@@ -5,6 +5,7 @@
   --border: 1px solid #d5e0d5;
   --blue: #1f57c3;
   --green: #14a800;
+  --green-hover: #3c8224;
 }
 
 *,
@@ -48,9 +49,14 @@ body {
   text-decoration: none;
 }
 
-.wrapper {
+.wrapper,
+.wrapperForm {
   display: flex;
   align-items: center;
+}
+
+.wrapperForm {
+  min-height: 100vh;
 }
 
 .main {
@@ -295,20 +301,71 @@ body {
 .form {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  margin: auto;
 }
 
 .form-section {
-  width: 40%;
+  width: 600px;
   padding: 5%;
   margin: auto;
-  box-shadow: 0 4px 8px 0 #13544e;
+  border: var(--border);
+  border-radius: 13px;
+}
+
+.form-section h1 {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .field {
-  margin: 5px;
   height: 40px;
-  border-radius: 10px;
-  padding: 5px;
+  padding: 21px 12px;
+  margin-bottom: 20px;
+  border: var(--border);
+  transition: all 0.15s;
+}
+
+.field:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: var(--green);
+}
+
+.submit_btn {
+  color: #fff;
+  background: var(--green);
+  border-color: transparent;
+  padding: 12px 29px;
+  border: 1px solid;
+  border-radius: 10rem;
+  font-weight: 500;
+  display: inline-block;
+  font-size: 15px;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+  transition: all 0.15s;
+  cursor: pointer;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.submit_btn:hover {
+  background: var(--green-hover);
+}
+
+.not_member {
+  margin-top: 10px;
+  overflow: hidden;
+  text-align: center;
+  color: #5e6d55;
+}
+
+.not_member a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+.not_member a:hover {
+  color: #001e00;
 }

@@ -18,13 +18,13 @@ const SideBar = () => (
         </NavLink>
       </li>
       <li className="nav-item">
-        <NavLink to="/reservation/new" className="nav-link">
-          New Reservation
+        <NavLink to="/reservations" className="nav-link">
+          Reservations
         </NavLink>
       </li>
       <li className="nav-item">
-        <NavLink to="/reservations" className="nav-link">
-          Reservations
+        <NavLink to="/reservation/new" className="nav-link">
+          New Reservation
         </NavLink>
       </li>
     </ul>
