@@ -340,8 +340,7 @@ body {
 }
 
 .field {
-  height: 40px;
-  padding: 21px 12px;
+  padding: 16px 12px;
   margin-bottom: 20px;
   border: var(--border);
   transition: all 0.15s;

@@ -30,16 +30,10 @@ const authHeader = () => {
 
 // creat a new reservation
 export const newReservation = async (reservation) => {
-  const formData = new FormData();
-  formData.append('reservation[developer_id]', reservation.developer_id);
-  formData.append('reservation[city]', reservation.city);
-  formData.append('reservation[start_date]', reservation.start_date);
-  formData.append('reservation[end_date]', reservation.end_date);
-  const response = await axios.post(`${url}/reservations`, formData, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authHeader()}`,
-    },
+  const user = JSON.parse(localStorage.getItem('user'));
+  const response = await axios.post(`${url}/reservations`, {
+    ...reservation,
+    user_id: user.id,
   });
 
   return response.data;

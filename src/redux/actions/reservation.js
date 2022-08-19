@@ -2,7 +2,6 @@ import * as API from '../data';
 
 const actionTypes = {
   RESERVATIONS_FETCH_SUCCESS: 'RESERVATIONS_FETCH_SUCCESS',
-  RESERVATIONS_FETCH_REQUEST: 'RESERVATIONS_FETCH_REQUEST',
   RESERVATIONS_FETCH_FAILURE: 'RESERVATIONS_FETCH_FAILURE',
   RESERVATION_FETCH_SUCCESS: 'RESERVATION_FETCH_SUCCESS',
   RESERVATION_FETCH_FAILURE: 'RESERVATION_FETCH_FAILURE',
@@ -12,8 +11,8 @@ const actionTypes = {
   RESERVATION_DELETE_FAILURE: 'RESERVATION_DELETE_FAILURE',
 };
 
-export const createReservation = (reservation, id) => (dispatch) => {
-  API.newReservation(reservation, id)
+export const createReservation = (reservation) => (dispatch) => {
+  API.newReservation(reservation)
     .then((reservation) => {
       dispatch({
         type: actionTypes.RESERVATION_CREATE_SUCCESS,
@@ -29,9 +28,6 @@ export const createReservation = (reservation, id) => (dispatch) => {
 };
 
 export const fetchReservations = () => (dispatch) => {
-  dispatch({
-    type: actionTypes.RESERVATIONS_FETCH_REQUEST,
-  });
   API.fetchReservations()
     .then((reservations) => {
       dispatch({
