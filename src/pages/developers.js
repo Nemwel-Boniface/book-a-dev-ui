@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchDevelopers } from '../redux/actions/developers';
-import SingleDeveloper from './single_developer';
+import Layout from '../layouts/layout';
+import SingleDeveloper from '../components/developer/single_developer';
 
-const Developers = (id) => {
+const Developers = () => {
   const dispatch = useDispatch();
   const { developers } = useSelector((state) => state.developer);
   useEffect(() => {
@@ -11,15 +12,20 @@ const Developers = (id) => {
   }, []);
 
   return (
-    <section>
-      <h1>Developer List</h1>
-      <p>Please select a developer</p>
+    <Layout>
+      <div className="devs">
+        <h1 className="title">Developer List</h1>
+        <p className="desc">Please select a developer</p>
 
-      <div>
-        <SingleDeveloper developpers={developers} key={id} />
+        <div>
+          {developers.length
+            ? developers.map((developer) => (
+              <SingleDeveloper developer={developer} key={developer.id} />
+            ))
+            : 'No developers found'}
+        </div>
       </div>
-
-    </section>
+    </Layout>
   );
 };
 

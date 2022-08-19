@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Developers from './pages/developers';
 import Developer from './pages/developer';
+import Reservations from './pages/reservations';
 import Login from './pages/login';
 import FormReservation from './pages/reserveForm';
 import CreateDev from './pages/create_dev';
@@ -15,6 +16,7 @@ function App() {
         <Route path="developers" element={<Developers />} />
         <Route path="developers/:developerId" element={<Developer />} />
         <Route path="new_dev" element={<Developer />} />
+        <Route path="reservations" element={<Reservations />} />
         <Route path="reservation_form" element={<FormReservation />} />
         <Route path="create_dev" element={<CreateDev />} />
       </Routes>
