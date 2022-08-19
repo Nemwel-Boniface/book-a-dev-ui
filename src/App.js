@@ -4,8 +4,9 @@ import Developer from './pages/developer';
 import CreateDev from './pages/create_dev';
 import Reservations from './pages/reservations';
 import Login from './pages/login';
-import FormReservation from './pages/reserveForm';
+import CreateRes from './pages/reserveForm';
 import Signup from './pages/signup';
+import RequireAuth from './layouts/requireAuth';
 
 function App() {
   return (
@@ -13,11 +14,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="registration" element={<Signup />} />
-        <Route path="developers" element={<Developers />} />
-        <Route path="developers/:developerId" element={<Developer />} />
-        <Route path="create_dev" element={<CreateDev />} />
-        <Route path="reservations" element={<Reservations />} />
-        <Route path="reservation_form" element={<FormReservation />} />
+        <Route element={<RequireAuth />}>
+          <Route path="developers" element={<Developers />} />
+          <Route path="developers/:developerId" element={<Developer />} />
+          <Route path="create_dev" element={<CreateDev />} />
+          <Route path="reservations" element={<Reservations />} />
+          <Route path="create_reservation" element={<CreateRes />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

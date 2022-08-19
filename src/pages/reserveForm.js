@@ -2,12 +2,24 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createReservation } from '../redux/actions/reservation';
-import ReservationForm from '../components/reserve/form';
 
 const FormReservation = () => {
-  const [reservation] = useState();
+  const [reservation, setReservation] = useState({
+    city: '',
+    start_date: '',
+    end_date: '',
+  });
   const dispatch = useDispatch();
   const { id } = useParams();
+
+  const handleOnChange = (event) => {
+    setReservation((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const cities = ['Nairobi', 'Mombasa', 'Kinshasa', 'Goma', 'Dodoma', 'Kigali'];
 
   const handleReserve = (e) => {
     e.preventDefault();
@@ -20,9 +32,39 @@ const FormReservation = () => {
       <p>Please complete the form below to book a developer</p>
 
       <div>
-        <ReservationForm onSubmit={handleReserve} />
+        <form className="form" onSubmit={handleReserve}>
+          <select
+            className="field"
+            name="city"
+            onChange={handleOnChange}
+            value={reservation.city}
+          >
+            {cities.map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
+          <input
+            className="field"
+            name="start_date"
+            onChange={handleOnChange}
+            type="date"
+            value={reservation.start_date}
+          />
+          <input
+            className="field"
+            placeholder="End date"
+            name="end_date"
+            onChange={handleOnChange}
+            type="date"
+            value={reservation.end_date}
+          />
+          <button className="submit_btn" type="submit">
+            Reserve
+          </button>
+        </form>
       </div>
-
     </section>
   );
 };
