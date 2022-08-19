@@ -1,23 +1,18 @@
 import axios from 'axios';
 
 const url = 'http://localhost:8080/api/v1';
+const authUrl = 'http://localhost:8080/';
 
 export const signup = async (user) => {
-  const response = await axios.post(`${url}/users`, {
-    user: {
-      email: user.email,
-      password: user.password,
-    },
+  const response = await axios.post(`${authUrl}/auth`, {
+    ...user,
   });
   return response.data;
 };
 
 export const login = async (user) => {
-  const response = await axios.post(`${url}/users/sign_in`, {
-    user: {
-      email: user.email,
-      password: user.password,
-    },
+  const response = await axios.post(`${authUrl}/auth/sign_in`, {
+    ...user,
   });
   return response;
 };
@@ -46,34 +41,18 @@ export const newReservation = async (reservation) => {
   return response.data;
 };
 
-export const createdeveloper = async (developer, e) => {
-  const formData = new FormData();
-  formData.append('developer[name]', developer.name);
-  formData.append('developer[icon]', e.target.icon.files[0]);
-  formData.append('developer[title]', developer.title);
-  formData.append('developer[location]', developer.location);
-  formData.append('developer[hourly_rate]', developer.hourly_rate);
-  formData.append('developer[experience]', developer.experience);
-  formData.append('developer[tech_stack]', developer.tech_stack);
-  formData.append('developer[email]', developer.email);
-  formData.append('developer[github]', developer.github);
-  formData.append('developer[linkedin]', developer.linkedin);
-  formData.append('developer[telephone]', developer.telephone);
-  formData.append('developer[description]', developer.description);
-  formData.append('developer[is_available]', developer.is_available);
-
-  const response = await axios.post(`${url}/developers`, formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-      Authorization: `Bearer ${authHeader()}`,
-    },
+export const createdeveloper = async (developer) => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const response = await axios.post(`${url}/developers`, {
+    ...developer,
+    user_id: user.id,
   });
 
   return response.data;
 };
 
-export const getDeveloper = async () => {
-  const response = await axios.get(`${url}`, {
+export const getDeveloper = async (id) => {
+  const response = await axios.get(`${url}/developers/${id}`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${authHeader()}`,

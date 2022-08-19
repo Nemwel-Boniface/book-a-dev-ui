@@ -4,18 +4,20 @@ import PropTypes from 'prop-types';
 
 const SingleDeveloper = ({ developer }) => (
   <Link to={`/developers/${developer.id}`} className="devs-card">
-    <div className="image">
-      <img src={developer.icon} alt={developer.name} />
-    </div>
+    <img src={developer.icon} alt={developer.name} className="image" />
 
-    <div>
+    <div className="dev-info">
       <h2>{developer.name}</h2>
-      <p>{developer.bio}</p>
-      <ul className="tech_stack">
-        {developer.tech_stack.map((tech) => (
-          <li key={tech.name}>{tech.name}</li>
-        ))}
-      </ul>
+      <h3>{developer.title}</h3>
+      <div className={`status ${developer.available ? 'green' : 'grey'}`}>
+        <span className="dot" />
+        <p>Available</p>
+      </div>
+      <p className="price">
+        $
+        {developer.hourly_rate}
+        /hr
+      </p>
     </div>
   </Link>
 );
@@ -24,13 +26,12 @@ SingleDeveloper.propTypes = {
   developer: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     bio: PropTypes.string.isRequired,
     icon: PropTypes.string.isRequired,
-    tech_stack: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-      }),
-    ).isRequired,
+    available: PropTypes.bool.isRequired,
+    hourly_rate: PropTypes.number.isRequired,
+    tech_stack: PropTypes.string.isRequired,
   }).isRequired,
 };
 

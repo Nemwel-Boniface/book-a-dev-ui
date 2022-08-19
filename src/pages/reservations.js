@@ -22,11 +22,10 @@ const Developers = () => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Date</th>
-              <th>Time</th>
+              <th>Location</th>
+              <th>Developer ID</th>
+              <th>Start Date</th>
+              <th>End Date</th>
             </tr>
           </thead>
           <tbody>

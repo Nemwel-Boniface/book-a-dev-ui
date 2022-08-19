@@ -1,6 +1,5 @@
 const actionTypes = {
   USER_LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS',
-  USER_LOGIN_REQUEST: 'USER_LOGIN_REQUEST',
   USER_LOGIN_FAILURE: 'USER_LOGIN_FAILURE',
   USER_LOGOUT_SUCCESS: 'USER_LOGOUT_SUCCESS',
   USER_LOGOUT_FAILURE: 'USER_LOGOUT_FAILURE',
@@ -36,14 +35,6 @@ const userReducer = (state = initialState, action) => {
         isLoggedIn: true,
         user: action.payload,
         loadingLogin: false,
-        loadingSignup: false,
-        errorLogin: null,
-        errorSignup: null,
-      };
-    case actionTypes.USER_LOGIN_REQUEST:
-      return {
-        ...state,
-        loadingLogin: true,
         loadingSignup: false,
         errorLogin: null,
         errorSignup: null,

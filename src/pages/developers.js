@@ -17,9 +17,9 @@ const Developers = () => {
         <h1 className="title">Developer List</h1>
         <p className="desc">Please select a developer</p>
 
-        <div>
-          {developers.length
-            ? developers.map((developer) => (
+        <div className="dev_wrapper">
+          {developers.data
+            ? developers.data.map((developer) => (
               <SingleDeveloper developer={developer} key={developer.id} />
             ))
             : 'No developers found'}

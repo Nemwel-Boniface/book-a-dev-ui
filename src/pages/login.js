@@ -5,9 +5,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import { login } from '../redux/actions/user';
 
 const Login = () => {
-  const { errorLogin = null, loadingLogin = false } = useSelector(
-    (state) => state.user,
-  );
+  const { errorLogin, loadingLogin } = useSelector((state) => state.user);
   const [userLogin, setLogin] = useState({
     email: '',
     password: '',
@@ -45,7 +43,7 @@ const Login = () => {
             </div>
           )}
 
-          {errorLogin && <p>Invalid email/password</p>}
+          {errorLogin && <p>{errorLogin}</p>}
           <input
             onChange={handleOnChange}
             type="email"
@@ -69,7 +67,6 @@ const Login = () => {
           </button>
           <span className="not_member">
             Not a member?
-            {' '}
             {' '}
             <Link to="/registration">Register</Link>
           </span>

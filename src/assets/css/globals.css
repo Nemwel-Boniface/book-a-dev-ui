@@ -37,11 +37,6 @@ body {
   text-align: center;
 }
 
-.image {
-  border: 2px solid black;
-  border-radius: 50%;
-}
-
 .social {
   display: flex;
   justify-content: space-around;
@@ -152,14 +147,39 @@ body {
   max-width: 800px;
 }
 
+.dev_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .devs .title,
 .devs .desc {
-  text-align: left;
+  text-align: center;
 }
 
 .devs-card {
   border: var(--border);
   border-radius: 13px;
+  display: flex;
+  margin: 20px 0;
+  width: 45%;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.15s;
+}
+
+.devs-card .dev-info {
+  padding: 10px;
+  margin-left: 20px;
+}
+
+.devs-card .image {
+  width: 30%;
+}
+
+.devs-card:hover {
+  transform: scale(1.05);
 }
 
 /* developer details page */
@@ -201,7 +221,8 @@ body {
   font-size: 14px;
 }
 
-.info .img .status {
+.info .img .status,
+.status {
   display: flex;
   padding: 5px 18px;
   border: var(--border);
@@ -225,14 +246,16 @@ body {
   line-height: 1;
 }
 
-.info .img .status span {
+.info .img .status span,
+.status span {
   width: 12px;
   height: 12px;
   background: var(--green);
   border-radius: 50%;
 }
 
-.info .img .status p {
+.info .img .status p,
+.status p {
   margin-left: 5px;
   font-size: 13px;
   color: var(--green);
@@ -368,4 +391,29 @@ body {
 
 .not_member a:hover {
   color: #001e00;
+}
+
+.green {
+  color: var(--green) !important;
+}
+
+.grey {
+  color: #001e00 !important;
+}
+
+.dev-info .price {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+table,
+th,
+td {
+  border: var(--border);
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 10px;
 }

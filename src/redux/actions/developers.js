@@ -48,8 +48,8 @@ export const fetchDevelopers = (dispatch) => {
     });
 };
 
-export const fetchDeveloper = (dispatch) => {
-  API.getDeveloper()
+export const fetchDeveloper = (id) => (dispatch) => {
+  API.getDeveloper(id)
     .then((developer) => {
       dispatch({
         type: actionTypes.DEVELOPER_FETCH_SUCCESS,

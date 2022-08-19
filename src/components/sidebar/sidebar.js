@@ -13,7 +13,7 @@ const SideBar = () => (
         </NavLink>
       </li>
       <li className="nav-item">
-        <NavLink to="/new_dev" className="nav-link">
+        <NavLink to="/create_dev" className="nav-link">
           New Developer
         </NavLink>
       </li>
