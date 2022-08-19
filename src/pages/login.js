@@ -5,7 +5,8 @@ import { ThreeDots } from 'react-loader-spinner';
 import { login } from '../redux/actions/user';
 
 const Login = () => {
-  const { errorLogin, loadingLogin } = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user);
+  const [loading, setLoading] = useState(false);
   const [userLogin, setLogin] = useState({
     email: '',
     password: '',
@@ -13,37 +14,32 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    dispatch(login(userLogin, navigate));
-  };
-
   const handleOnChange = (event) => {
     setLogin((prevState) => ({
       ...prevState,
       [event.target.name]: event.target.value,
     }));
   };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    e.preventDefault();
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      dispatch(login(userLogin, navigate));
+    }, 1000);
+  };
   return (
     <div className="wrapperForm">
       <div className="form-section">
-        <h1>Login</h1>
+        <h1>Log In</h1>
         <form onSubmit={handleLogin} className="form">
-          {loadingLogin && (
-            <div>
-              <ThreeDots
-                height="180"
-                width="180"
-                radius="3"
-                color="#98be20"
-                ariaLabel="three-dots-loading"
-                wrapperStyle
-                wrapperClass
-              />
-            </div>
+          {user.error && (
+          <div className="error_message">
+            <p>Wrong user credentials or User does not exist</p>
+          </div>
           )}
-
-          {errorLogin && <p>{errorLogin}</p>}
           <input
             onChange={handleOnChange}
             type="email"
@@ -63,7 +59,18 @@ const Login = () => {
             className="field"
           />
           <button type="submit" className="submit_btn">
-            Log In
+            {loading ? (
+              <>
+                <ThreeDots
+                  height="15"
+                  width="40"
+                  radius="1"
+                  color="#ffffff"
+                />
+              </>
+            ) : (
+              'Log In'
+            )}
           </button>
           <span className="not_member">
             Not a member?

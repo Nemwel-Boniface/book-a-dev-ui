@@ -29,12 +29,14 @@ const userReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: true,
         user: action.payload,
+        error: null,
       };
     case actionTypes.USER_LOGIN_FAILURE:
       return {
         ...state,
         isLoggedIn: false,
         user: null,
+        error: action.payload,
       };
     case actionTypes.USER_LOGOUT_SUCCESS:
       return {
@@ -53,6 +55,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: true,
         user: action.payload,
+        error: null,
       };
     case actionTypes.USER_REGISTER_FAILURE:
       return {

@@ -13,25 +13,18 @@ const actionTypes = {
 export const login = (userData, location) => (dispatch) => {
   API.login(userData)
     .then((response) => {
-      if (response.status === 200) {
-        dispatch({
-          type: actionTypes.USER_LOGIN_SUCCESS,
-          payload: response.data.data,
-        });
+      dispatch({
+        type: actionTypes.USER_LOGIN_SUCCESS,
+        payload: response.data.data,
+      });
 
-        localStorage.setItem('user', JSON.stringify(response.data.data));
-        location('/developers');
-      } else {
-        dispatch({
-          type: actionTypes.USER_LOGIN_FAILURE,
-          payload: response.data,
-        });
-      }
+      localStorage.setItem('user', JSON.stringify(response.data.data));
+      location('/developers');
     })
     .catch((error) => {
       dispatch({
         type: actionTypes.USER_LOGIN_FAILURE,
-        payload: error.response.data.errors[0],
+        payload: error,
       });
     });
 };

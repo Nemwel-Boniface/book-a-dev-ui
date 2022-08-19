@@ -40,7 +40,7 @@ const Signup = () => {
         <form onSubmit={handleLogin} className="form">
           {user.error && (
             <div className="error_message">
-              <p>Wrong user credentials or User does not exist</p>
+              <p>Wrong user credentials or An error occured</p>
             </div>
           )}
           <input
@@ -89,9 +89,6 @@ const Signup = () => {
                   width="40"
                   radius="1"
                   color="#ffffff"
-                  ariaLabel="three-dots-loading"
-                  wrapperStyle
-                  wrapperClass
                 />
               </>
             ) : (
