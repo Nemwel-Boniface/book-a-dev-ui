@@ -5,7 +5,7 @@ const RequireAuth = () => {
   const user = useSelector((state) => state.user);
   const location = useLocation();
   const { from } = location.state || { from: { pathname: '/dashboard' } };
-  if (user.isAuthenticated) {
+  if (user.isLoggedIn) {
     return Outlet(from);
   }
   return <Navigate to={{ pathname: '/', state: { from } }} />;
