@@ -107,6 +107,22 @@ body {
   margin-top: auto;
 }
 
+.not_member {
+  margin-top: 10px;
+  overflow: hidden;
+  text-align: center;
+  color: #5e6d55;
+}
+
+.not_member a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+.not_member a:hover {
+  color: #001e00;
+}
+
 .navbar .navbar-social a {
   display: inline-block;
   font-size: 20px;
@@ -204,6 +220,11 @@ body {
   border-radius: 50%;
 }
 
+.form-section h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 .info .img h1 {
   margin-bottom: 10px;
   text-align: center;
@@ -215,14 +236,8 @@ body {
   word-break: break-word;
 }
 
-.info .img p {
-  overflow: hidden;
-  display: block;
-  font-size: 14px;
-}
-
-.info .img .status,
-.status {
+.status,
+.info .img .status {
   display: flex;
   padding: 5px 18px;
   border: var(--border);
@@ -230,6 +245,13 @@ body {
   border-radius: 10rem;
   margin-top: 10px;
   align-items: center;
+}
+
+.status span {
+  width: 12px;
+  height: 12px;
+  background: var(--green);
+  border-radius: 50%;
 }
 
 .info-text .skills ul li span {
@@ -246,16 +268,26 @@ body {
   line-height: 1;
 }
 
-.info .img .status span,
-.status span {
+.info .img .status span {
   width: 12px;
   height: 12px;
   background: var(--green);
   border-radius: 50%;
 }
 
-.info .img .status p,
 .status p {
+  margin-left: 5px;
+  font-size: 13px;
+  color: var(--green);
+}
+
+.info .img p {
+  overflow: hidden;
+  display: block;
+  font-size: 14px;
+}
+
+.info .img .status p {
   margin-left: 5px;
   font-size: 13px;
   color: var(--green);
@@ -334,11 +366,6 @@ body {
   border-radius: 13px;
 }
 
-.form-section h1 {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
 .field {
   padding: 16px 12px;
   margin-bottom: 20px;
@@ -376,22 +403,6 @@ body {
 
 .submit_btn:hover {
   background: var(--green-hover);
-}
-
-.not_member {
-  margin-top: 10px;
-  overflow: hidden;
-  text-align: center;
-  color: #5e6d55;
-}
-
-.not_member a {
-  color: var(--green);
-  text-decoration: none;
-}
-
-.not_member a:hover {
-  color: #001e00;
 }
 
 .green {
