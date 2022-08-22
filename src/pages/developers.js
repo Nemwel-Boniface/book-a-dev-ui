@@ -1,15 +1,9 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchDevelopers } from '../redux/actions/developers';
+import { useSelector } from 'react-redux';
 import Layout from '../layouts/layout';
 import SingleDeveloper from '../components/developer/single_developer';
 
 const Developers = () => {
-  const dispatch = useDispatch();
-  const { developers } = useSelector((state) => state.developer);
-  useEffect(() => {
-    dispatch(fetchDevelopers);
-  }, []);
+  const { developers, error } = useSelector((state) => state.developer);
 
   return (
     <Layout>
@@ -17,8 +11,8 @@ const Developers = () => {
         <h1 className="title">Developer List</h1>
         <p className="desc">Please select a developer</p>
 
-        <div>
-          {developers.length
+        <div className="dev_wrapper">
+          {!error && developers
             ? developers.map((developer) => (
               <SingleDeveloper developer={developer} key={developer.id} />
             ))

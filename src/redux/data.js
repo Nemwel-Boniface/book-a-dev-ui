@@ -1,27 +1,25 @@
 import axios from 'axios';
 
 const url = 'http://localhost:8080/api/v1';
+const authUrl = 'http://localhost:8080/';
 
+// create a user
 export const signup = async (user) => {
-  const response = await axios.post(`${url}/users`, {
-    user: {
-      email: user.email,
-      password: user.password,
-    },
+  const response = await axios.post(`${authUrl}/auth`, {
+    ...user,
   });
   return response.data;
 };
 
+// login user
 export const login = async (user) => {
-  const response = await axios.post(`${url}/users/sign_in`, {
-    user: {
-      email: user.email,
-      password: user.password,
-    },
+  const response = await axios.post(`${authUrl}/auth/sign_in`, {
+    ...user,
   });
   return response;
 };
 
+// get token from local storage
 const authHeader = () => {
   const token = localStorage.getItem('token');
   if (token) {
@@ -30,68 +28,41 @@ const authHeader = () => {
   return {};
 };
 
+// creat a new reservation
 export const newReservation = async (reservation) => {
-  const formData = new FormData();
-  formData.append('reservation[developer_id]', reservation.developer_id);
-  formData.append('reservation[city]', reservation.city);
-  formData.append('reservation[start_date]', reservation.start_date);
-  formData.append('reservation[end_date]', reservation.end_date);
-  const response = await axios.post(`${url}/reservations`, formData, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authHeader()}`,
-    },
+  const user = JSON.parse(localStorage.getItem('user'));
+  const response = await axios.post(`${url}/users/${user.id}/reservations`, {
+    ...reservation,
+    user_id: user.id,
   });
 
   return response.data;
 };
 
-export const createdeveloper = async (developer, e) => {
-  const formData = new FormData();
-  formData.append('developer[name]', developer.name);
-  formData.append('developer[icon]', e.target.icon.files[0]);
-  formData.append('developer[title]', developer.title);
-  formData.append('developer[location]', developer.location);
-  formData.append('developer[hourly_rate]', developer.hourly_rate);
-  formData.append('developer[experience]', developer.experience);
-  formData.append('developer[tech_stack]', developer.tech_stack);
-  formData.append('developer[email]', developer.email);
-  formData.append('developer[github]', developer.github);
-  formData.append('developer[linkedin]', developer.linkedin);
-  formData.append('developer[telephone]', developer.telephone);
-  formData.append('developer[description]', developer.description);
-  formData.append('developer[is_available]', developer.is_available);
-
-  const response = await axios.post(`${url}/developers`, formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-      Authorization: `Bearer ${authHeader()}`,
-    },
+// create a dev
+export const createdeveloper = async (developer) => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  const response = await axios.post(`${url}/developers`, {
+    ...developer,
+    user_id: user.id,
   });
 
   return response.data;
 };
 
-export const getDeveloper = async () => {
-  const response = await axios.get(`${url}`, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authHeader()}`,
-    },
-  });
+// get a dev
+export const getDeveloper = async (id) => {
+  const response = await axios.get(`${url}/developers/${id}`);
   return response.data;
 };
 
+// get all devs
 export const fetchDevelopers = async () => {
-  const response = await axios.get(`${url}/developers`, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authHeader()}`,
-    },
-  });
+  const response = await axios.get(`${url}/developers`);
   return response.data;
 };
 
+// delete dev
 export const deleteDeveloper = async (id) => {
   const response = await axios.delete(`${url}/developers/${id}`, {
     headers: {
@@ -103,17 +74,15 @@ export const deleteDeveloper = async (id) => {
   return response.data;
 };
 
+// get reservation
 export const fetchReservations = async () => {
-  const response = await axios.get(`${url}/reservations`, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authHeader()}`,
-    },
-  });
+  const user = JSON.parse(localStorage.getItem('user'));
+  const response = await axios.get(`${url}/users/${user.id}/reservations`);
 
   return response.data;
 };
 
+// delete reservation
 export const deleteReservation = async (id) => {
   const response = await axios.delete(`${url}/reservations/${id}`, {
     headers: {

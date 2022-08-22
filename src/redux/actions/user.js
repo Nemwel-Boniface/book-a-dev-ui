@@ -3,7 +3,6 @@ import * as API from '../data';
 const actionTypes = {
   USER_LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS',
   USER_LOGIN_FAILURE: 'USER_LOGIN_FAILURE',
-  USER_LOGIN_REQUEST: 'USER_LOGIN_REQUEST',
   USER_LOGOUT_SUCCESS: 'USER_LOGOUT_SUCCESS',
   USER_LOGOUT_FAILURE: 'USER_LOGOUT_FAILURE',
   USER_REGISTER_SUCCESS: 'USER_REGISTER_SUCCESS',
@@ -12,20 +11,14 @@ const actionTypes = {
 };
 
 export const login = (userData, location) => (dispatch) => {
-  dispatch({
-    type: actionTypes.USER_LOGIN_REQUEST,
-  });
   API.login(userData)
     .then((response) => {
       dispatch({
         type: actionTypes.USER_LOGIN_SUCCESS,
-        payload: response.data,
+        payload: response.data.data,
       });
 
-      const result = response.headers.authorization;
-      localStorage.setItem('token', result.split(' ')[1]);
-      localStorage.setItem('user', JSON.stringify(response.data));
-
+      localStorage.setItem('user', JSON.stringify(response.data.data));
       location('/developers');
     })
     .catch((error) => {
@@ -37,16 +30,15 @@ export const login = (userData, location) => (dispatch) => {
 };
 
 export const signup = (userData, location) => (dispatch) => {
-  dispatch({
-    type: actionTypes.USER_REGISTER_REQUEST,
-  });
   API.signup(userData)
-    .then((user) => {
+    .then((res) => {
       dispatch({
         type: actionTypes.USER_REGISTER_SUCCESS,
-        payload: user,
+        payload: res.data,
       });
-      location('/login');
+
+      localStorage.setItem('user', JSON.stringify(res.data));
+      location('/developers');
     })
     .catch((error) => {
       dispatch({

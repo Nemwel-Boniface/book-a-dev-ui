@@ -1,97 +1,69 @@
+import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchDeveloper } from '../redux/actions/developers';
 import Layout from '../layouts/layout';
 
 const Developer = () => {
   const { developerId } = useParams();
+  const dispatch = useDispatch();
+  const { developer } = useSelector((state) => state.developer);
+  useEffect(() => {
+    dispatch(fetchDeveloper(developerId));
+  }, []);
   return (
     <Layout>
-      <div className="info">
-        <div className="img">
-          <img
-            src="https://avatars3.githubusercontent.com/u/639098?s=460&v=4"
-            alt="developer"
-          />
-          <h1>
-            Amandla Steinberg
-            {' '}
-            {developerId}
-          </h1>
-          <p>Nairobi, Kenya</p>
-          <div className="status">
-            <span className="dot" />
-            <p>Available</p>
+      {
+        Object.keys(developer).length ? (
+          <div className="info">
+            <div className="img">
+              <img
+                src={developer.icon}
+                alt={developer.name}
+              />
+              <h1>
+                {developer.name}
+              </h1>
+              <p>{developer.location}</p>
+              <div className={`status ${developer.available ? 'green' : 'grey'}`}>
+                <span className="dot" />
+                <p>Available</p>
+              </div>
+            </div>
+            <div className="info-text">
+              <h2>
+                <span>
+                  💻
+                  {' '}
+                  {developer.title}
+                </span>
+                <span>
+                  $
+                  {developer.hourly_rate}
+                  .00/hr 💸
+                </span>
+              </h2>
+              <p className="bio">{developer.bio}</p>
+              <div className="skills">
+                <h3>Skills</h3>
+                <ul>
+                  {
+                developer.tech_stack.split(',').map((tech) => (
+                  <li key={tech}>
+                    <span>{tech}</span>
+                  </li>
+                ))
+              }
+                </ul>
+              </div>
+              <div className="reserve">
+                <Link to="/reserve">reserve</Link>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="info-text">
-          <h2>
-            <span>💻 Full Stack Developer</span>
-            <span>$30.00/hr 💸</span>
-          </h2>
-          <p className="bio">
-            <p>
-              I&apos;m an experienced enthusiastic music producer/composer,
-              mixing, and mastering engineer. I love helping artists and
-              entrepreneurs progress using their vision and my creativity
-              combined.
-            </p>
-            <br />
-            <p>
-              I&apos;ve worked on various tracks and hosted live virtual music
-              production sessions with artists, songwriters, and
-              instrumentalists from across the globe; this is my passion. I will
-              do anything I can to help you while sharing the knowledge
-              I&apos;ve gathered during my years in the music business and being
-              an entrepreneur myself.
-            </p>
-          </p>
-          <div className="skills">
-            <h3>Skills</h3>
-            <ul>
-              <li>
-                <span>HTML</span>
-              </li>
-              <li>
-                <span>CSS</span>
-              </li>
-              <li>
-                <span>JavaScript</span>
-              </li>
-              <li>
-                <span>React</span>
-              </li>
-              <li>
-                <span>Ruby</span>
-              </li>
-              <li>
-                <span>Rails</span>
-              </li>
-              <li>
-                <span>Postgresql</span>
-              </li>
-              <li>
-                <span>MongoDB</span>
-              </li>
-              <li>
-                <span>Git</span>
-              </li>
-              <li>
-                <span>Github</span>
-              </li>
-              <li>
-                <span>Heroku</span>
-              </li>
-              <li>
-                <span>Netlify</span>
-              </li>
-            </ul>
-          </div>
-          <div className="reserve">
-            <Link to="/reserve">
-              reserve
-            </Link>
-          </div>
-        </div>
-      </div>
+        )
+          : 'Loading developer info...'
+      }
     </Layout>
   );
 };

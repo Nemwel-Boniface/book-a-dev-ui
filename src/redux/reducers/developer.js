@@ -16,7 +16,6 @@ const actionTypes = {
 const initialState = {
   developers: [],
   developer: {},
-  loading: false,
   error: null,
 };
 
@@ -26,41 +25,35 @@ const developerReducer = (state = initialState, action) => {
       return {
         ...state,
         developers: action.payload,
-        loading: false,
         error: null,
       };
     case actionTypes.DEVELOPERS_FETCH_FAILURE:
       return {
         ...state,
         developers: [],
-        loading: false,
         error: action.payload,
       };
     case actionTypes.DEVELOPER_FETCH_SUCCESS:
       return {
         ...state,
         developer: action.payload,
-        loading: false,
         error: null,
       };
     case actionTypes.DEVELOPER_FETCH_FAILURE:
       return {
         ...state,
         developer: {},
-        loading: false,
         error: action.payload,
       };
     case actionTypes.DEVELOPER_CREATE_SUCCESS:
       return {
         ...state,
         developers: [...state.developers, action.payload],
-        loading: false,
         error: null,
       };
     case actionTypes.DEVELOPER_CREATE_FAILURE:
       return {
         ...state,
-        loading: false,
         error: action.payload,
       };
     case actionTypes.DEVELOPER_UPDATE_SUCCESS:

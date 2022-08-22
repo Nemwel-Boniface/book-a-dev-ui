@@ -1,48 +1,41 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { fetchReservations } from '../redux/actions/reservation';
+import { useSelector } from 'react-redux';
 import Layout from '../layouts/layout';
 import Reservation from '../components/reservation/reservation';
 
 const Developers = () => {
-  const dispatch = useDispatch();
   const { reservations } = useSelector((state) => state.reservation);
-  const { userId } = useParams();
-
-  useEffect(() => {
-    dispatch(fetchReservations(userId));
-  }, []);
-
   return (
-    <Layout>
-      <div className="devs">
-        <h1>Reservation List</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Date</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            {reservations.length ? (
-              reservations.map((reservation) => (
-                <Reservation reservation={reservation} key={reservation.id} />
-              ))
-            ) : (
+    <>
+      <Layout>
+        <div className="devs">
+          <h1>Reservation List</h1>
+          <table>
+            <thead>
               <tr>
-                <td>No reservations found</td>
+                <th>No</th>
+                <th>Location</th>
+                <th>Developer Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
               </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
-    </Layout>
+            </thead>
+            <tbody>
+              {reservations.length ? (
+                reservations.map((reservation) => (
+                  <Reservation reservation={reservation} key={reservation.id} />
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={5} style={{ textAlign: 'center' }}>
+                    No reservations found
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </Layout>
+    </>
   );
 };
 
