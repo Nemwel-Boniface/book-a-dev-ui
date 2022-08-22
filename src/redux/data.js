@@ -31,7 +31,7 @@ const authHeader = () => {
 // creat a new reservation
 export const newReservation = async (reservation) => {
   const user = JSON.parse(localStorage.getItem('user'));
-  const response = await axios.post(`${url}/reservations`, {
+  const response = await axios.post(`${url}/users/${user.id}/reservations`, {
     ...reservation,
     user_id: user.id,
   });
@@ -76,12 +76,8 @@ export const deleteDeveloper = async (id) => {
 
 // get reservation
 export const fetchReservations = async () => {
-  const response = await axios.get(`${url}/reservations`, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authHeader()}`,
-    },
-  });
+  const user = JSON.parse(localStorage.getItem('user'));
+  const response = await axios.get(`${url}/users/${user.id}/reservations`);
 
   return response.data;
 };

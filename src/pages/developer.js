@@ -14,18 +14,18 @@ const Developer = () => {
   return (
     <Layout>
       {
-        developer.data ? (
+        developer ? (
           <div className="info">
             <div className="img">
               <img
-                src={developer.data.icon}
-                alt={developer.data.name}
+                src={developer.icon}
+                alt={developer.name}
               />
               <h1>
-                {developer.data.name}
+                {developer.name}
               </h1>
-              <p>{developer.data.location}</p>
-              <div className={`status ${developer.data.available ? 'green' : 'grey'}`}>
+              <p>{developer.location}</p>
+              <div className={`status ${developer.available ? 'green' : 'grey'}`}>
                 <span className="dot" />
                 <p>Available</p>
               </div>
@@ -35,20 +35,20 @@ const Developer = () => {
                 <span>
                   💻
                   {' '}
-                  {developer.data.title}
+                  {developer.title}
                 </span>
                 <span>
                   $
-                  {developer.data.hourly_rate}
+                  {developer.hourly_rate}
                   .00/hr 💸
                 </span>
               </h2>
-              <p className="bio">{developer.data.bio}</p>
+              <p className="bio">{developer.bio}</p>
               <div className="skills">
                 <h3>Skills</h3>
                 <ul>
                   {
-                developer.data.tech_stack.split(',').map((tech) => (
+                developer.tech_stack.split(',').map((tech) => (
                   <li key={tech}>
                     <span>{tech}</span>
                   </li>

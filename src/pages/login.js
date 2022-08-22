@@ -23,11 +23,11 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    e.preventDefault();
     setLoading(true);
+
     setTimeout(() => {
-      setLoading(false);
       dispatch(login(userLogin, navigate));
+      setLoading(false);
     }, 1000);
   };
   return (

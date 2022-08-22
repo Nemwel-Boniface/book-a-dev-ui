@@ -24,6 +24,9 @@ const CreateDev = () => {
     available: false,
   });
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { target } = e;
 
@@ -33,9 +36,6 @@ const CreateDev = () => {
       [target.name]: value,
     });
   };
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();

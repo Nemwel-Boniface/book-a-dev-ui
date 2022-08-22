@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
 import { createReservation } from '../redux/actions/reservation';
-import { fetchDevelopers } from '../redux/actions/developers';
 import Layout from '../layouts/layout';
 
 const FormReservation = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [reservation, setReservation] = useState({
     location: '',
@@ -16,8 +17,6 @@ const FormReservation = () => {
   });
   const { developers } = useSelector((state) => state.developer);
   const { error } = useSelector((state) => state.reservation);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleOnChange = (event) => {
     setReservation((prevState) => ({
@@ -31,14 +30,16 @@ const FormReservation = () => {
     setLoading(true);
     setTimeout(() => {
       dispatch(createReservation(reservation));
+      setReservation({
+        location: '',
+        start_date: '',
+        end_date: '',
+        developer_id: '',
+      });
       setLoading(false);
       navigate('/reservations');
     }, 1000);
   };
-
-  useEffect(() => {
-    dispatch(fetchDevelopers);
-  }, []);
 
   return (
     <Layout>
@@ -49,16 +50,26 @@ const FormReservation = () => {
         <div>
           <form className="form" onSubmit={handleReserve}>
             {error && (
-            <div className="error_message">
-              <p>Wrong reservation credentials or An error occured</p>
-            </div>
+              <div className="error_message">
+                <p>Wrong reservation credentials or An error occured</p>
+              </div>
             )}
-            <select name="developer_id" onChange={handleOnChange} className="field">
-              {developers.data && developers.data.map((developer) => (
-                <option key={developer.id} value={developer.id}>
-                  {developer.name}
-                </option>
-              ))}
+            <select
+              name="developer_id"
+              onChange={handleOnChange}
+              className="field"
+              value={reservation.developer_id}
+              required
+            >
+              <option value="" disabled>
+                Select a developer
+              </option>
+              {developers
+                && developers.map((developer) => (
+                  <option key={developer.id} value={developer.id}>
+                    {developer.name}
+                  </option>
+                ))}
             </select>
             <input
               className="field"

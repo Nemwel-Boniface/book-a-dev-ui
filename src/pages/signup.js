@@ -27,9 +27,10 @@ const Signup = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     setLoading(true);
+
     setTimeout(() => {
-      setLoading(false);
       dispatch(signup(userSignup, navigate));
+      setLoading(false);
     }, 1000);
   };
 

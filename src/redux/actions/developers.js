@@ -15,12 +15,12 @@ const actionTypes = {
   RESERVE_CREATE_FAILURE: 'RESERVE_CREATE_FAILURE',
 };
 
-export const newDev = (developer) => (dispatch) => {
-  API.createdeveloper(developer)
+export const newDev = (developer) => async (dispatch) => {
+  await API.createdeveloper(developer)
     .then((developer) => {
       dispatch({
         type: actionTypes.DEVELOPER_CREATE_SUCCESS,
-        payload: developer,
+        payload: developer.data,
       });
     })
     .catch((error) => {
@@ -31,12 +31,12 @@ export const newDev = (developer) => (dispatch) => {
     });
 };
 
-export const fetchDevelopers = (dispatch) => {
-  API.fetchDevelopers()
+export const fetchDevelopers = async (dispatch) => {
+  await API.fetchDevelopers()
     .then((developers) => {
       dispatch({
         type: actionTypes.DEVELOPERS_FETCH_SUCCESS,
-        payload: developers,
+        payload: developers.data,
       });
     })
     .catch((error) => {
@@ -47,12 +47,12 @@ export const fetchDevelopers = (dispatch) => {
     });
 };
 
-export const fetchDeveloper = (id) => (dispatch) => {
-  API.getDeveloper(id)
+export const fetchDeveloper = (id) => async (dispatch) => {
+  await API.getDeveloper(id)
     .then((developer) => {
       dispatch({
         type: actionTypes.DEVELOPER_FETCH_SUCCESS,
-        payload: developer,
+        payload: developer.data,
       });
     })
     .catch((error) => {
@@ -63,8 +63,8 @@ export const fetchDeveloper = (id) => (dispatch) => {
     });
 };
 
-export const deleteDeveloper = (id, navigate) => (dispatch) => {
-  API.deleteDeveloper(id)
+export const deleteDeveloper = (id, navigate) => async (dispatch) => {
+  await API.deleteDeveloper(id)
     .then(() => {
       dispatch({
         type: actionTypes.DEVELOPER_DELETE_SUCCESS,
@@ -80,8 +80,8 @@ export const deleteDeveloper = (id, navigate) => (dispatch) => {
     });
 };
 
-export const reserveDeveloper = (reserve, navigate) => (dispatch) => {
-  API.newReservation(reserve)
+export const reserveDeveloper = (reserve, navigate) => async (dispatch) => {
+  await API.newReservation(reserve)
     .then((reserve) => {
       dispatch({
         type: actionTypes.RESERVE_CREATE_SUCCESS,

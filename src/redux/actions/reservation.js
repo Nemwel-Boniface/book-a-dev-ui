@@ -16,7 +16,7 @@ export const createReservation = (reservation) => (dispatch) => {
     .then((reservation) => {
       dispatch({
         type: actionTypes.RESERVATION_CREATE_SUCCESS,
-        payload: reservation,
+        payload: reservation.data,
       });
     })
     .catch((error) => {
@@ -27,7 +27,7 @@ export const createReservation = (reservation) => (dispatch) => {
     });
 };
 
-export const fetchReservations = () => (dispatch) => {
+export const fetchReservations = (dispatch) => {
   API.fetchReservations()
     .then((reservations) => {
       dispatch({

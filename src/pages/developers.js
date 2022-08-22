@@ -1,15 +1,9 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchDevelopers } from '../redux/actions/developers';
+import { useSelector } from 'react-redux';
 import Layout from '../layouts/layout';
 import SingleDeveloper from '../components/developer/single_developer';
 
 const Developers = () => {
-  const dispatch = useDispatch();
   const { developers, error } = useSelector((state) => state.developer);
-  useEffect(() => {
-    dispatch(fetchDevelopers);
-  }, []);
 
   return (
     <Layout>
@@ -18,8 +12,8 @@ const Developers = () => {
         <p className="desc">Please select a developer</p>
 
         <div className="dev_wrapper">
-          {!error && developers.data
-            ? developers.data.map((developer) => (
+          {!error && developers
+            ? developers.map((developer) => (
               <SingleDeveloper developer={developer} key={developer.id} />
             ))
             : 'No developers found'}
