@@ -15,13 +15,14 @@ const actionTypes = {
   RESERVE_CREATE_FAILURE: 'RESERVE_CREATE_FAILURE',
 };
 
-export const newDev = (developer) => async (dispatch) => {
+export const newDev = (developer, navigate) => async (dispatch) => {
   await API.createdeveloper(developer)
     .then((developer) => {
       dispatch({
         type: actionTypes.DEVELOPER_CREATE_SUCCESS,
         payload: developer.data,
       });
+      navigate('/developers');
     })
     .catch((error) => {
       dispatch({
