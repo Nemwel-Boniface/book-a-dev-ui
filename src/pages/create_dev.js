@@ -41,9 +41,8 @@ const CreateDev = () => {
     e.preventDefault();
     setLoading(true);
     setTimeout(() => {
-      dispatch(newDev(dev));
       setLoading(false);
-      navigate('/developers');
+      dispatch(newDev(dev, navigate));
     }, 1000);
   };
 

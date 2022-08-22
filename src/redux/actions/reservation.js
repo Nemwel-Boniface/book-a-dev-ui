@@ -11,13 +11,14 @@ const actionTypes = {
   RESERVATION_DELETE_FAILURE: 'RESERVATION_DELETE_FAILURE',
 };
 
-export const createReservation = (reservation) => (dispatch) => {
+export const createReservation = (reservation, navigate) => (dispatch) => {
   API.newReservation(reservation)
     .then((reservation) => {
       dispatch({
         type: actionTypes.RESERVATION_CREATE_SUCCESS,
         payload: reservation.data,
       });
+      navigate('/reservations');
     })
     .catch((error) => {
       dispatch({

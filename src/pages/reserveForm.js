@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
 import { createReservation } from '../redux/actions/reservation';
 import Layout from '../layouts/layout';
@@ -8,12 +8,15 @@ import Layout from '../layouts/layout';
 const FormReservation = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const devId = searchParams.get('developerId');
+
   const [loading, setLoading] = useState(false);
   const [reservation, setReservation] = useState({
     location: '',
     start_date: '',
     end_date: '',
-    developer_id: '',
+    developer_id: devId || '',
   });
   const { developers } = useSelector((state) => state.developer);
   const { error } = useSelector((state) => state.reservation);
@@ -29,7 +32,7 @@ const FormReservation = () => {
     e.preventDefault();
     setLoading(true);
     setTimeout(() => {
-      dispatch(createReservation(reservation));
+      dispatch(createReservation(reservation, navigate));
       setReservation({
         location: '',
         start_date: '',
@@ -37,7 +40,6 @@ const FormReservation = () => {
         developer_id: '',
       });
       setLoading(false);
-      navigate('/reservations');
     }, 1000);
   };
 
@@ -58,15 +60,21 @@ const FormReservation = () => {
               name="developer_id"
               onChange={handleOnChange}
               className="field"
-              value={reservation.developer_id}
+              defaultValue={devId || ''}
               required
             >
-              <option value="" disabled>
+              <option
+                value=""
+                disabled
+              >
                 Select a developer
               </option>
               {developers
                 && developers.map((developer) => (
-                  <option key={developer.id} value={developer.id}>
+                  <option
+                    key={developer.id}
+                    value={developer.id}
+                  >
                     {developer.name}
                   </option>
                 ))}

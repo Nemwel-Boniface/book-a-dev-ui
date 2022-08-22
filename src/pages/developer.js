@@ -57,7 +57,12 @@ const Developer = () => {
                 </ul>
               </div>
               <div className="reserve">
-                <Link to="/reserve">reserve</Link>
+                <Link
+                  to={`/create_reservation/?developerId=${developerId}`}
+                >
+                  reserve
+
+                </Link>
               </div>
             </div>
           </div>
