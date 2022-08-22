@@ -14,7 +14,7 @@ const Developer = () => {
   return (
     <Layout>
       {
-        developer ? (
+        Object.keys(developer).length ? (
           <div className="info">
             <div className="img">
               <img
