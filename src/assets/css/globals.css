@@ -55,10 +55,19 @@ body {
 }
 
 .main {
-  margin: 0 auto;
+  min-height: 100vh;
+  width: 100%;
 }
 
 /* sidebar */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+  margin-bottom: 50px;
+}
+
 .navbar {
   width: 23%;
   border: var(--border);
