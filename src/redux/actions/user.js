@@ -49,13 +49,13 @@ export const signup = (userData, location) => (dispatch) => {
 };
 
 export const logout = (navigate) => (dispatch) => {
-  if (localStorage.getItem('token')) {
+  if (localStorage.getItem('user')) {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     dispatch({
       type: actionTypes.USER_LOGOUT_SUCCESS,
     });
-    navigate('/developers');
+    navigate('/');
   } else {
     dispatch({
       type: actionTypes.USER_LOGOUT_FAILURE,
