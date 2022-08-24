@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchDeveloper, deleteDeveloper } from '../redux/actions/developers';
 import Layout from '../layouts/layout';
-import { useNavigate } from "react-router-dom";
 
 const Developer = () => {
   const { developerId } = useParams();
@@ -12,11 +11,11 @@ const Developer = () => {
   useEffect(() => {
     dispatch(fetchDeveloper(developerId));
   }, []);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleDelete = () => {
-    navigate("/developers");
-    dispatch(deleteDeveloper({developerId}))
-  }
+    navigate('/developers', { replace: true });
+    dispatch(deleteDeveloper({ developerId }));
+  };
   return (
     <Layout>
       {
@@ -64,6 +63,7 @@ const Developer = () => {
               </div>
               <div className="reserve">
                 <button
+                  type="button"
                   onClick={handleDelete}
                 >
                   Delete
