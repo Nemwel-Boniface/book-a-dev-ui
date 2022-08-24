@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchDeveloper } from '../redux/actions/developers';
+import { fetchDeveloper, deleteDeveloper } from '../redux/actions/developers';
 import Layout from '../layouts/layout';
 
 const Developer = () => {
@@ -11,6 +11,9 @@ const Developer = () => {
   useEffect(() => {
     dispatch(fetchDeveloper(developerId));
   }, []);
+  const handleDelete = () => {
+    dispatch(deleteDeveloper({developerId}))
+  }
   return (
     <Layout>
       {
@@ -58,9 +61,18 @@ const Developer = () => {
               </div>
               <div className="reserve">
                 <Link
+                  to={`/developers=${developerId}`}
+                  onClick={handleDelete}
+                >
+                  Delete
+
+                </Link>
+              </div>
+              <div className="reserve">
+                <Link
                   to={`/create_reservation/?developerId=${developerId}`}
                 >
-                  reserve
+                  Reserve
 
                 </Link>
               </div>
