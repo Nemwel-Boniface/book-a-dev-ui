@@ -63,18 +63,12 @@ const FormReservation = () => {
               defaultValue={devId || ''}
               required
             >
-              <option
-                value=""
-                disabled
-              >
+              <option value="" disabled>
                 Select a developer
               </option>
               {developers
                 && developers.map((developer) => (
-                  <option
-                    key={developer.id}
-                    value={developer.id}
-                  >
+                  <option key={developer.id} value={developer.id}>
                     {developer.name}
                   </option>
                 ))}

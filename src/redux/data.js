@@ -1,11 +1,10 @@
 import axios from 'axios';
 
-const url = 'http://localhost:8080/api/v1';
-const authUrl = 'http://localhost:8080/';
+const url = 'https://book-a-dev-api.herokuapp.com/api/v1';
 
 // create a user
 export const signup = async (user) => {
-  const response = await axios.post(`${authUrl}/auth`, {
+  const response = await axios.post(`${url}/users`, {
     ...user,
   });
   return response.data;
@@ -13,7 +12,7 @@ export const signup = async (user) => {
 
 // login user
 export const login = async (user) => {
-  const response = await axios.post(`${authUrl}/auth/sign_in`, {
+  const response = await axios.post(`${url}/login`, {
     ...user,
   });
   return response;
@@ -31,9 +30,11 @@ const authHeader = () => {
 // creat a new reservation
 export const newReservation = async (reservation) => {
   const user = JSON.parse(localStorage.getItem('user'));
+  const { developer_id: developerId } = reservation;
   const response = await axios.post(`${url}/users/${user.id}/reservations`, {
     ...reservation,
     user_id: user.id,
+    developer_id: Number(developerId),
   });
 
   return response.data;
