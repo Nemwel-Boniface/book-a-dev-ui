@@ -30,11 +30,9 @@ const authHeader = () => {
 // creat a new reservation
 export const newReservation = async (reservation) => {
   const user = JSON.parse(localStorage.getItem('user'));
-  const { developer_id: developerId } = reservation;
   const response = await axios.post(`${url}/users/${user.id}/reservations`, {
     ...reservation,
     user_id: user.id,
-    developer_id: Number(developerId),
   });
 
   return response.data;
