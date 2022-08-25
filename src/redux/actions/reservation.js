@@ -7,8 +7,6 @@ const actionTypes = {
   RESERVATION_FETCH_FAILURE: 'RESERVATION_FETCH_FAILURE',
   RESERVATION_CREATE_SUCCESS: 'RESERVATION_CREATE_SUCCESS',
   RESERVATION_CREATE_FAILURE: 'RESERVATION_CREATE_FAILURE',
-  RESERVATION_DELETE_SUCCESS: 'RESERVATION_DELETE_SUCCESS',
-  RESERVATION_DELETE_FAILURE: 'RESERVATION_DELETE_FAILURE',
 };
 
 export const createReservation = (reservation, navigate) => (dispatch) => {
@@ -40,23 +38,6 @@ export const fetchReservations = (dispatch) => {
       dispatch({
         type: actionTypes.RESERVATIONS_FETCH_FAILURE,
         payload: error,
-      });
-    });
-};
-
-export const deleteReservation = (id, navigate) => (dispatch) => {
-  API.deleteReservation(id)
-    .then((res) => {
-      dispatch({
-        type: actionTypes.RESERVATION_DELETE_SUCCESS,
-        payload: res,
-      });
-      navigate('/deveopers');
-    })
-    .catch((err) => {
-      dispatch({
-        type: actionTypes.RESERVATION_DELETE_FAILURE,
-        payload: err,
       });
     });
 };

@@ -18,15 +18,6 @@ export const login = async (user) => {
   return response;
 };
 
-// get token from local storage
-const authHeader = () => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    return token;
-  }
-  return {};
-};
-
 // creat a new reservation
 export const newReservation = async (reservation) => {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -65,12 +56,7 @@ export const fetchDevelopers = async () => {
 
 // delete dev
 export const deleteDeveloper = async (id) => {
-  const response = await axios.delete(`${url}/developers/${id}`, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authHeader()}`,
-    },
-  });
+  const response = await axios.delete(`${url}/developers/${id}`, {});
 
   return response.data;
 };
@@ -79,18 +65,6 @@ export const deleteDeveloper = async (id) => {
 export const fetchReservations = async () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const response = await axios.get(`${url}/users/${user.id}/reservations`);
-
-  return response.data;
-};
-
-// delete reservation
-export const deleteReservation = async (id) => {
-  const response = await axios.delete(`${url}/reservations/${id}`, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authHeader()}`,
-    },
-  });
 
   return response.data;
 };

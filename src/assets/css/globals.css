@@ -6,6 +6,8 @@
   --blue: #1f57c3;
   --green: #14a800;
   --green-hover: #3c8224;
+  --danger: #ff4848;
+  --danger-hover: #e43232;
 }
 
 *,
@@ -142,6 +144,22 @@ body {
   color: #001e00;
   padding: 10px;
   transition: all 0.15s;
+}
+
+.info-text .reserve button {
+  background: var(--danger);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10rem;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.info-text .reserve button:hover {
+  background: var(--danger-hover);
 }
 
 .info-text .reserve a {

@@ -5,8 +5,6 @@ const actionTypes = {
   RESERVATION_FETCH_FAILURE: 'RESERVATION_FETCH_FAILURE',
   RESERVATION_CREATE_SUCCESS: 'RESERVATION_CREATE_SUCCESS',
   RESERVATION_CREATE_FAILURE: 'RESERVATION_CREATE_FAILURE',
-  RESERVATION_DELETE_SUCCESS: 'RESERVATION_DELETE_SUCCESS',
-  RESERVATION_DELETE_FAILURE: 'RESERVATION_DELETE_FAILURE',
 };
 
 const initialState = {
@@ -37,17 +35,6 @@ const reservationReducer = (state = initialState, action) => {
         error: null,
       };
     case actionTypes.RESERVATION_CREATE_FAILURE:
-      return {
-        ...state,
-        error: action.payload,
-      };
-    case actionTypes.RESERVATION_DELETE_SUCCESS:
-      return {
-        ...state,
-        error: false,
-      };
-
-    case actionTypes.RESERVATION_DELETE_FAILURE:
       return {
         ...state,
         error: action.payload,
