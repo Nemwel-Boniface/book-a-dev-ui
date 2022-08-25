@@ -58,153 +58,147 @@ const CreateDev = () => {
               <p>Wrong developer credentials or An error occured</p>
             </div>
             )}
-            <input
-              className="field"
-              placeholder="Dev Name"
-              type="text"
-              name="name"
-              minLength="3"
-              maxLength="100"
-              onChange={handleChange}
-              value={dev.name}
-              required
-            />
-            {/* <input
-          className="field"
-          placeholder="Dev icon"
-          type="file"
-          id="icon"
-          name="icon"
-          minLength="1"
-          maxLength="100"
-          onChange={handleChange}
-          value={dev.icon}
-          required
-        /> */}
-            <input
-              className="field"
-              placeholder="Icon"
-              type="text"
-              name="icon"
-              minLength="3"
-              maxLength="100"
-              onChange={handleChange}
-              value={dev.icon}
-              required
-            />
+            <div className="grid">
+              <div className="block1">
+                <input
+                  className="field"
+                  placeholder="Dev Name"
+                  type="text"
+                  name="name"
+                  minLength="3"
+                  maxLength="100"
+                  onChange={handleChange}
+                  value={dev.name}
+                  required
+                />
+                <input
+                  className="field"
+                  placeholder="Icon"
+                  type="text"
+                  name="icon"
+                  minLength="3"
+                  maxLength="100"
+                  onChange={handleChange}
+                  value={dev.icon}
+                  required
+                />
 
-            <input
-              className="field"
-              type="text"
-              name="title"
-              placeholder="e.g Web Developer"
-              value={dev.title}
-              onChange={handleChange}
-              required
-            />
-            <input
-              className="field"
-              type="text"
-              name="location"
-              placeholder="Location"
-              value={dev.location}
-              onChange={handleChange}
-              required
-            />
-            <input
-              className="field"
-              type="number"
-              name="experience"
-              placeholder="Years of Experience"
-              value={dev.experience}
-              onChange={handleChange}
-              required
-            />
+                <input
+                  className="field"
+                  type="text"
+                  name="title"
+                  placeholder="e.g Web Developer"
+                  value={dev.title}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  className="field"
+                  type="text"
+                  name="location"
+                  placeholder="Location"
+                  value={dev.location}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  className="field"
+                  type="number"
+                  name="experience"
+                  placeholder="Years of Experience"
+                  value={dev.experience}
+                  onChange={handleChange}
+                  required
+                />
 
-            <input
-              className="field"
-              placeholder="Write all stack that apply separated by comma"
-              type="text"
-              name="tech_stack"
-              value={dev.tech_stack}
-              minLength="1"
-              maxLength="100"
-              onChange={handleChange}
-              required
-            />
+                <input
+                  className="field"
+                  placeholder="Write all stack that apply separated by comma"
+                  type="text"
+                  name="tech_stack"
+                  value={dev.tech_stack}
+                  minLength="1"
+                  maxLength="100"
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  className="field"
+                  placeholder="Hourly Rate"
+                  type="number"
+                  name="hourly_rate"
+                  value={dev.hourly_rate}
+                  onChange={handleChange}
+                  required
+                />
 
-            <input
-              className="field"
-              placeholder="Hourly Rate"
-              type="number"
-              name="hourly_rate"
-              value={dev.hourly_rate}
-              onChange={handleChange}
-              required
-            />
+              </div>
 
-            <input
-              className="field"
-              placeholder="Github"
-              type="url"
-              name="github"
-              value={dev.github}
-              minLength="1"
-              maxLength="100"
-              onChange={handleChange}
-              required
-            />
+              <div className="block2">
+                <input
+                  className="field"
+                  placeholder="Github"
+                  type="url"
+                  name="github"
+                  value={dev.github}
+                  minLength="1"
+                  maxLength="100"
+                  onChange={handleChange}
+                  required
+                />
 
-            <input
-              className="field"
-              placeholder="LinkedIn"
-              type="url"
-              name="linkedin"
-              value={dev.linkedin}
-              minLength="1"
-              maxLength="100"
-              onChange={handleChange}
-              required
-            />
+                <input
+                  className="field"
+                  placeholder="LinkedIn"
+                  type="url"
+                  name="linkedin"
+                  value={dev.linkedin}
+                  minLength="1"
+                  maxLength="100"
+                  onChange={handleChange}
+                  required
+                />
 
-            <input
-              className="field"
-              placeholder="Twitter"
-              type="url"
-              name="twitter"
-              value={dev.twitter}
-              minLength="1"
-              maxLength="100"
-              onChange={handleChange}
-              required
-            />
+                <input
+                  className="field"
+                  placeholder="Twitter"
+                  type="url"
+                  name="twitter"
+                  value={dev.twitter}
+                  minLength="1"
+                  maxLength="100"
+                  onChange={handleChange}
+                  required
+                />
 
-            <input
-              className="field"
-              placeholder="Telephone"
-              type="text"
-              name="phone"
-              value={dev.phone}
-              minLength="1"
-              maxLength="100"
-              onChange={handleChange}
-              required
-            />
+                <input
+                  className="field"
+                  placeholder="Telephone"
+                  type="text"
+                  name="phone"
+                  value={dev.phone}
+                  minLength="1"
+                  maxLength="100"
+                  onChange={handleChange}
+                  required
+                />
 
-            <textarea
-              className="field"
-              placeholder="Description"
-              type="text"
-              name="bio"
-              value={dev.bio}
-              minLength="1"
-              maxLength="100"
-              onChange={handleChange}
-              required
-            />
+                <textarea
+                  className="field"
+                  placeholder="Description"
+                  type="text"
+                  name="bio"
+                  value={dev.bio}
+                  minLength="1"
+                  maxLength="100"
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
             <label htmlFor="available">
               <input
-                className="field"
+                className="check"
                 type="checkbox"
                 id="available"
                 name="available"
