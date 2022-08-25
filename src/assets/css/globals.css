@@ -6,6 +6,8 @@
   --blue: #1f57c3;
   --green: #14a800;
   --green-hover: #3c8224;
+  --danger: #ff4848;
+  --danger-hover: #e43232;
 }
 
 *,
@@ -70,6 +72,7 @@ body {
   justify-content: space-between;
   padding: 20px 30px;
   margin-bottom: 50px;
+  border-bottom: var(--border);
 }
 
 .navbar {
@@ -144,6 +147,22 @@ body {
   transition: all 0.15s;
 }
 
+.info-text .reserve button {
+  background: var(--danger);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10rem;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.info-text .reserve button:hover {
+  background: var(--danger-hover);
+}
+
 .info-text .reserve a {
   margin-left: auto;
   color: #fff;
@@ -179,7 +198,9 @@ body {
 .dev_wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 40px;
+  margin-top: 30px;
+  justify-content: center;
 }
 
 .devs .title,
@@ -191,8 +212,7 @@ body {
   border: var(--border);
   border-radius: 13px;
   display: flex;
-  margin: 20px 0;
-  width: 45%;
+  width: 370px;
   text-decoration: none;
   color: inherit;
   transition: all 0.15s;
@@ -396,7 +416,7 @@ body {
   color: #fff;
   background: var(--green);
   border-color: transparent;
-  padding: 12px 29px;
+  padding: 12px 50px;
   border: 1px solid;
   border-radius: 10rem;
   font-weight: 500;

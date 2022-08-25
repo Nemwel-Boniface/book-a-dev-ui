@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchReservations } from './redux/actions/reservation';
 import { fetchDevelopers } from './redux/actions/developers';
 import Developers from './pages/developers';
@@ -13,11 +13,15 @@ import Signup from './pages/signup';
 import RequireAuth from './layouts/requireAuth';
 
 function App() {
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchDevelopers);
-    dispatch(fetchReservations);
   }, []);
+
+  useEffect(() => {
+    dispatch(fetchReservations);
+  }, [user]);
   return (
     <BrowserRouter>
       <Routes>

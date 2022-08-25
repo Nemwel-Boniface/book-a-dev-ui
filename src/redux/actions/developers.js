@@ -7,12 +7,8 @@ const actionTypes = {
   DEVELOPER_FETCH_FAILURE: 'DEVELOPER_FETCH_FAILURE',
   DEVELOPER_CREATE_SUCCESS: 'DEVELOPER_CREATE_SUCCESS',
   DEVELOPER_CREATE_FAILURE: 'DEVELOPER_CREATE_FAILURE',
-  DEVELOPER_UPDATE_SUCCESS: 'DEVELOPER_UPDATE_SUCCESS',
-  DEVELOPER_UPDATE_FAILURE: 'DEVELOPER_UPDATE_FAILURE',
   DEVELOPER_DELETE_SUCCESS: 'DEVELOPER_DELETE_SUCCESS',
   DEVELOPER_DELETE_FAILURE: 'DEVELOPER_DELETE_FAILURE',
-  RESERVE_CREATE_SUCCESS: 'RESERVE_CREATE_SUCCESS',
-  RESERVE_CREATE_FAILURE: 'RESERVE_CREATE_FAILURE',
 };
 
 export const newDev = (developer, navigate) => async (dispatch) => {
@@ -71,28 +67,11 @@ export const deleteDeveloper = (id, navigate) => async (dispatch) => {
         type: actionTypes.DEVELOPER_DELETE_SUCCESS,
         payload: id,
       });
-      navigate('/developers');
+      navigate('/developers', { replace: true });
     })
     .catch((error) => {
       dispatch({
         type: actionTypes.DEVELOPER_DELETE_FAILURE,
-        payload: error,
-      });
-    });
-};
-
-export const reserveDeveloper = (reserve, navigate) => async (dispatch) => {
-  await API.newReservation(reserve)
-    .then((reserve) => {
-      dispatch({
-        type: actionTypes.RESERVE_CREATE_SUCCESS,
-        payload: reserve,
-      });
-      navigate('/reservations');
-    })
-    .catch((error) => {
-      dispatch({
-        type: actionTypes.RESERVE_CREATE_FAILURE,
         payload: error,
       });
     });
