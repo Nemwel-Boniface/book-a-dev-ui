@@ -72,6 +72,7 @@ body {
   justify-content: space-between;
   padding: 20px 30px;
   margin-bottom: 50px;
+  border-bottom: var(--border);
 }
 
 .navbar {
@@ -197,7 +198,9 @@ body {
 .dev_wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 40px;
+  margin-top: 30px;
+  justify-content: center;
 }
 
 .devs .title,
@@ -209,8 +212,7 @@ body {
   border: var(--border);
   border-radius: 13px;
   display: flex;
-  margin: 20px 0;
-  width: 45%;
+  width: 370px;
   text-decoration: none;
   color: inherit;
   transition: all 0.15s;
@@ -414,7 +416,7 @@ body {
   color: #fff;
   background: var(--green);
   border-color: transparent;
-  padding: 12px 29px;
+  padding: 12px 50px;
   border: 1px solid;
   border-radius: 10rem;
   font-weight: 500;
