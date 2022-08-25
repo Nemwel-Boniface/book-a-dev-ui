@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <header className="header">
       <div>
-        <h1>
+        <h1 className="head">
           Welcome,
           {' '}
           {

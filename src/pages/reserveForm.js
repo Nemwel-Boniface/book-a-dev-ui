@@ -47,7 +47,7 @@ const FormReservation = () => {
     <Layout>
       <section className="form-section">
         <h1>Reserve a developer</h1>
-        <p>Please complete the form below to book a developer</p>
+        <p className="res">Please complete the form below to book a developer</p>
 
         <div>
           <form className="form" onSubmit={handleReserve}>

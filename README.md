@@ -10,9 +10,9 @@
 - react, redux
 - stylelint, barbel, eslint
 
-## Live Demo (if available)
+## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://marvelous-rabanadas-2be278.netlify.app/)
 
 ## Getting Started
 
@@ -30,6 +30,10 @@ To get a local copy up and running follow these simple example steps.
 ### Install
 
 - run `npm install`
+
+### Start
+
+- run `npm start`
 
 ### Usage
 
