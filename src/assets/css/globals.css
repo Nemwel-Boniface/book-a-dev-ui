@@ -196,7 +196,7 @@ body {
 /* developers list page */
 .devs {
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 768px;
 }
 
 .dev_wrapper {
@@ -212,11 +212,16 @@ body {
   text-align: center;
 }
 
+.devs .desc {
+  margin-bottom: 30px;
+}
+
 .devs-card {
   border: var(--border);
   border-radius: 13px;
   display: flex;
-  width: 370px;
+  align-items: center;
+  flex-direction: column;
   text-decoration: none;
   color: inherit;
   transition: all 0.15s;
@@ -224,11 +229,11 @@ body {
 
 .devs-card .dev-info {
   padding: 10px;
-  margin-left: 20px;
+  text-align: center;
 }
 
 .devs-card .image {
-  width: 40%;
+  max-width: 100%;
 }
 
 .devs-card:hover {
@@ -282,6 +287,11 @@ body {
   border-radius: 10rem;
   margin-top: 10px;
   align-items: center;
+}
+
+.status.green {
+  justify-content: center;
+  margin: 12px auto;
 }
 
 .status span {
@@ -398,6 +408,7 @@ body {
 .form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .grid {
