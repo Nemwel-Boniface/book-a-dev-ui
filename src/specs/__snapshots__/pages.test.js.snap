@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test developers page should be able to see the developer details pages 1`] = `null`;
+
+exports[`Test developers page should be able to see the login pages 1`] = `
+<div
+  className="wrapperForm"
+>
+  <div
+    className="form-section"
+  >
+    <h1>
+      Log In
+    </h1>
+    <form
+      className="form"
+      onSubmit={[Function]}
+    >
+      <input
+        className="field"
+        id="signup-email-field"
+        name="email"
+        onChange={[Function]}
+        placeholder="Email"
+        required={true}
+        type="email"
+      />
+      <input
+        className="field"
+        id="login-password-field"
+        name="password"
+        onChange={[Function]}
+        placeholder="Password"
+        required={true}
+        type="password"
+      />
+      <button
+        className="submit_btn"
+        type="submit"
+      >
+        Log In
+      </button>
+      <span
+        className="not_member"
+      >
+        Not a member?
+         
+        <a
+          href="/registration"
+          onClick={[Function]}
+        >
+          Register
+        </a>
+      </span>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Test developers page should be able to see the login pages 2`] = `null`;
+
+exports[`Test developers page should be able to see the login pages 3`] = `null`;
+
+exports[`Test developers page should be able to see the login pages 4`] = `null`;
+
+exports[`Test developers page should display the reservation list 1`] = `null`;
